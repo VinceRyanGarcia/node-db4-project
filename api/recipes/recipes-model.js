@@ -39,6 +39,12 @@ async function getRecipeById(recipe_id){
         }
           // it's a new step with an ingredient
           // it's a step we have encountered before   
+          const currentStep = acc.find(step => step.step_id === row.step_id)
+          currentStep.ingredients.push({
+              ingredient_id: row.ingredient_id,
+              ingredient_name: row.ingredient_name,
+              quantity: row.quantity,
+          })
           return acc 
         }, [])
     }
